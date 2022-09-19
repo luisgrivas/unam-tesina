@@ -2,10 +2,35 @@
 \usepackage[spanish,mexico]{babel}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+
+
+\newcommand{\N}{\mathbb{S}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+
+
+\newtheorem{teo}{Teorema}[section]
+\newtheorem{coro}[teo]{Corolario}
+\newtheorem{lema}[teo]{Lema}
+\newtheorem{prop}[teo]{Proposición}
+\newtheorem*{axiom}{Axioma}
+
+\theoremstyle{definition}
+\newtheorem{defi}{Definición}[section]
+
 
 \begin{document}
 \input{portada.tex}
+\input{preliminares.tex}
 \input{introduccion.tex}
+\input{brun-minkowski.tex}
 
 
 \end{document}
