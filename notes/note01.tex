@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+%\usepackage{mathpazo,amsfonts}
+\usepackage[margin=0.95in]{geometry}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+
+\title{Notes on the Bonnesen-Grynkiewicz-Serra Inequality}
+\author{LMP, LGR}
+
+
+\begin{document}
+\maketitle
+
+The Bonnesen-Grynkiewicz-Serra Inequality states that %CITA
+\begin{theorem} \label{GS}
+Let $A, B \subset \R^2$ be finite sets, and let $L$ be a line in $\R^2$ through the origin. Then
+$$\lvert A + B \rvert \geq \left( \frac{\lvert A \rvert }{\lvert p (A) \rvert} + \frac{\lvert B \rvert }{\lvert p (B) \rvert } - 1\right) \left( \lvert p(A) \rvert + \lvert p(B) \rvert - 1 \right).$$
+Where $p: \R^2 \rightarrow L^\perp$ is the orthogonal projection of $\R^2$ on $L^\perp$.
+\end{theorem}
+
+The theorem is also true in all dimensions. In this note we will prove the case $d = 3.$ Let $H$ be a $k-$ dimensional subspace of $\R^d$ and let $\{w_1, \ldots w_k\}$ be a orthonormal base of $H.$ The map $p_H: \R^d \rightarrow H$ defined by $v \mapsto \sum_{i=1}^k (v \cdot w_i) \ w_i$ is called \textit{the orthogonal projection} of $\R^d$ on $H.$ The set $H^\perp = \{v \in \R^d: v \cdot w = 0, w \in H \}$ is called the \textit{orthogonal complement} of $H$. Direct computation shows that $H^\perp$ is a subspace of $\R^d$. Also, we have the following direct results. %%%%
+
+\begin{lemma}
+    The map $v \mapsto v - p_H (v)$ is the orthogonal projection of $\R^d$ on $H^\perp.$ The kernel of this map is $H$.
+\end{lemma}
+
+\begin{lemma}
+    Let $A, B$ be subsets of $\R^3$. The map $p_H$ satisfies 
+    $$p_H(A + B) = p_H(A) + p_H(B).$$
+\end{lemma}
+\begin{proof} Let $a \in A$ and $b\in B.$ Note that 
+\begin{eqnarray*}
+p_H(a + b) &=&  ((a + b)\cdot w_1) w_1 + ((a+b) \cdot w_2) w_2\\
+&=& (a\cdot w_1) w_1 + (a \cdot w_2) w_2 +(b\cdot w_1) w_1 + (b \cdot w_2) w_2\\
+&=& p_H(a) + p_H(b).
+\end{eqnarray*}
+The result follows.
+\end{proof}
+
+Let $A$ be a finite subset of $\R^d$. Denote by $L(A)$ the set of lines $l$ through the origin in $\R^d$ such that
+$$\lvert (l + x) \cap A \rvert > 1,$$
+for some $x \in \R^d$. Notice that the set $L(A)$ is finite, since $A$ is finite and there is a unique line that passes through any pair of points.
+
+
+%Consider $A, B$ finite subsets of $\R^3.$ Define the set
+%$$\Omega(A, B) = A \cup B \cup (A + B) \cup p_H(A) \cup p_H(B) \cup p_H(A+B) \subset \R^3.$$
+%Since $\Omega(A,B)$ is finite, then there is a hyperplane $H^\prime$ in $\R^3$ such that 
+
+
+
+
+
+
+
+\end{document}
