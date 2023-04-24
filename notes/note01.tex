@@ -14,6 +14,8 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+
 
 
 \title{Notes on the Bonnesen-Grynkiewicz-Serra Inequality}
@@ -37,7 +39,7 @@ The theorem is also true in all dimensions. In this note we will prove the case 
 \end{lemma}
 
 \begin{lemma}
-    Let $A, B$ be subsets of $\R^3$. The map $p_H$ satisfies 
+    Let $A, B$ be subsets of $\R^d$. The map $p_H$ satisfies 
     $$p_H(A + B) = p_H(A) + p_H(B).$$
 \end{lemma}
 \begin{proof} Let $a \in A$ and $b\in B.$ Note that 
@@ -49,40 +51,56 @@ p_H(a + b) &=&  ((a + b)\cdot w_1) w_1 + ((a+b) \cdot w_2) w_2\\
 The result follows.
 \end{proof}
 
+As a corollary of Lemma 2 we have
+\begin{corollary}
+A projection $p_{H}: R^d \rightarrow H$ maps parallel lines into parallel lines. 
+\end{corollary}
+\begin{proof}
+    Let $L$ be a $1-$dimensional subspace of $\R^d$, and let $H$ be a subspace of $\R^d$ that is not $L.$ Then $p_H(L)$ is a subspace of $H$ of dimension $1$, that is, a line. By Lemma 2, $p_H(x + L) = p_H(x) + p_H(L)$ and $p_H(y + L) = p_H(y) + p_H(L)$. Therefore $p_H$ maps parallel lines into parallel lines. 
+\end{proof}
 Let $A$ be a finite subset of $\R^d$. Denote by $L(A)$ the set of lines $l$ through the origin in $\R^d$ such that
 $$\lvert (l + x) \cap A \rvert > 1,$$
-for some $x \in \R^d$. Notice that the set $L(A)$ is finite, since $A$ is finite and there is a unique line that passes through any pair of points.
+for some $x \in \R^d$. Notice that the set $L(A)$ is finite, since $A$ is finite and there is a unique line that passes through any pair of points. 
+
+Let $C(A,L)$ be the minimum finite set of parallel lines to $L$ that covers $A$. Recall that any pair of parallel lines define a unique plane. Let $P(A, L)$ be the set of planes defined by every possible pair of lines in $C(A,L)$. Notice that $P(A, L)$ is finite, since $C(A,L)$ is finite. 
 
 \begin{lemma}
     Let $A$ be a finite subset of $\R^d$ and let $L$ be a line through the origin in $\R^d$. Then there is a line $K$ through the origin in $\R^d$ such that
     \begin{itemize}
-        \item[i)] $p_{K^\perp}$ maps parallel lines in $\R^d$ into parallel lines in $K^\perp$;
-        \item[ii)] $\lvert A \rvert  = \lvert p_{K^\perp}(A) \rvert$;
+        \item[i)] $\lvert A \rvert  = \lvert p_{K^\perp}(A) \rvert$;
+        \item[ii)] the number of lines parallel to $L$ that covers $A$ in $\R^d$ equals the number of lines parallel to $p_{K^\perp}(L)$ that covers $p_{K^\perp}(A)$ in $K^\perp.$
+        
     \end{itemize}
 \end{lemma}
 \begin{proof}
-    (\textit{Sketch}) Choose a line $K$ be a line through the origin in $\R^d$ that is not $L$ and is not a member of $L(A)$ (we can do this because $L \cup L(A)$ is finite).
+
+Choose a line $K$ through the origin in $\R^d$ that is not $L$, it is not a member of $L(A)$, and it is not contained in any of the planes of $P(A,L)$  (we can do this because $L \cup L(A) \cup P(A,L)$ is finite). 
+\begin{itemize}
+\item[i)]  Suppose that there are $a, a^\prime \in A$ such that $p_{K^\perp}(a) = p_{k^\perp}(a^\prime).$ By Lemma 1, $a - a^\prime \in K.$ But this means that $a$ and $a^\perp$ belong to the same line parallel to $K$. But since $K$ is not a line in $L(A)$ and is not $L$, we have that $a = a^\prime.$ Therefore $\lvert A \rvert  = \lvert p_{K^\perp}(A) \rvert$.
+\item[ii)] Now suppose that $p_{K^\perp}(x + L) = p_{K^\perp}( y + L)$ for $x + L, y + L$ in $C(A, L).$ Then $p_{K^\perp}(x-y) \in p_{K^\perp}(L)$. Since $K$ is not contained in any of the planes in $P(A, L)$, we have that $x + L = y + L.$ 
+\end{itemize}
 \end{proof}
-%\begin{proof}
-%Let $K$ be a line through the origin in $\R^d$ that is not $L$ and is not a member of $L(A)$ (we can do this because $L \cup L(A)$ is finite). Since $L \cap K = \{0\}$, $p_{K^\perp}(L)$
- %   \begin{itemize}
-  %      \item[i)] Let $$
-   %     \item[ii)] Suppose that there are $a, a^\prime \in A$ such that $p_{K^\perp}(a) = p_{k^\perp}(a^\prime).$ By Lemma 1, $a - a^\prime \in K.$ By definition, $a-a^\prime = $
-   % \end{itemize}
-\end{proof}
+
+Lemma 3 can be applied iteratively to any finite union of finite sets. That is the key to prove the next Theorem.
 
 \begin{theorem}
     Theorem 1 is also true in dimension 3.
 \end{theorem}
 \begin{proof}
     Let 
-    $$\Omega = A \cup B \cup (A + B) \cup p_L(A) \cup p_L(B) \cup p_L(A+B) \subset \R^3.$$
+    $$\Omega = A \cup B \cup (A + B) \cup p_{L^\perp}(A) \cup p_{L^\perp}(B) \cup p_{L^\perp}(A+B) \subset \R^3.$$
     By Lemma 3, we can choose a line $K$ through the origin in $\R^3$ such that
     $\lvert p_{K^\perp}(A) \rvert = \lvert A \rvert$, $\lvert p_{K^\perp}(B) \rvert = \lvert B \rvert$, $\lvert p_{K^\perp}(A + B) \rvert = \lvert A + B\rvert$, $\lvert p_{L^\perp}(p_{K^\perp}(A)) \rvert = \lvert p_{L^\perp}(A) \rvert$ and $\lvert p_{L^\perp}(p_{K^\perp}(B)) \rvert = \lvert p_{L^\perp}(B) \rvert$. Thus, by Theorem 1
     $$\lvert   p_{K^\perp}(A) +  p_{K^\perp}(B) \rvert \geq \left( \frac{\lvert  p_{K^\perp}(A) \rvert }{\lvert  p_{L^\perp}(p_{K^\perp}(A))  \rvert} + \frac{\lvert  p_{K^\perp}(B) \rvert }{\lvert  p_{L^\perp}(p_{K^\perp}(B))  \rvert } - 1\right) \left( \lvert p_{K^\perp}(A) \rvert + \lvert p_{K^\perp}(B) \rvert - 1 \right).$$ And by Lemma 2 we have,
      $$\lvert A + B \rvert \geq \left( \frac{\lvert A \rvert }{\lvert p_{L^\perp}(A) \rvert} + \frac{\lvert B \rvert }{\lvert p_{L^\perp} (B) \rvert } - 1\right) \left( \lvert p_{L^\perp}(A) \rvert + \lvert p_{L^\perp}(B) \rvert - 1 \right).$$
-    
-    
+\end{proof}
+
+
+\begin{theorem}
+    Theorem 2 is also true if we replace the line $L$ by a plane $H$ in $\R^3.$
+\end{theorem}
+\begin{proof} (\textit{Sketch})
+    Let $K$ be a line through the origin such that $K \subset H$ with the same properties as the proof of Theorem 1. Repeat the reasoning.  
 \end{proof}
 
 
