@@ -3,6 +3,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{fancyhdr}
+\usepackage[spanish]{babel}
 %\usepackage{mathpazo,amsfonts}
 \usepackage[margin=0.95in]{geometry}
 
@@ -11,41 +12,88 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
 
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Teorema}
+\newtheorem{lemma}{Lema}
 
 
-\title{A Generalization of the Bonnesen-Grynkiewicz-Serra Inequality}
+\title{Una Generalización de la Desigualdad Bonnesen-Grynkiewicz-Serra}
 \author{LMP, LGR}
 %%%% CONTENT %%%%%5
 \begin{document}
 \maketitle
 
-\section{Introduction}
-The Bonnesen-Grynkiewicz-Serra Inequality states that %CITA
+
+La desigualdad de Bonnesen-Grynkiewicz-Serra (BGS) establece que %CITA
+
 \begin{theorem} \label{GS}
-Let $A, B \subset \R^2$ be finite sets, and let $L$ be a line in $\R^2$ through the origin. Then
-$$\lvert A + B \rvert \geq \left( \frac{\lvert A \rvert }{\lvert \pi (A) \rvert} + \frac{\lvert B \rvert }{\lvert \pi (B) \rvert } - 1\right) \left( \lvert \pi(A) \rvert + \lvert \pi(B) \rvert - 1 \right).$$
-Where $\pi: \R^2 \rightarrow L$ is the orthogonal projection of $\R^2$ on $L$.
+Sean $A, B \subset \R^2$ conjuntos finitos y sea $L$ una línea en $\R^2$ que pasa por el origen. Entonces
+$$\lvert A + B \rvert \geq \left( \frac{\lvert A \rvert }{\lvert p (A) \rvert} + \frac{\lvert B \rvert }{\lvert p (B) \rvert } - 1\right) \left( \lvert p(A) \rvert + \lvert p(B) \rvert - 1 \right),$$
+donde $p: \R^2 \rightarrow L^\perp$ es la proyección ortogonal de $\R^2$ en $L^\perp$.
 \end{theorem}
 
-In these notes we will prove the following slightly generalization.
-\begin{theorem} \label{res}
-Let $A, B \subset \R^n$ be finite sets, and let $H$ be a $k$-dimensional subspace of $\R^n$. 
+El teorema también es cierto para todas las dimensiones y para cualquier subespacio de $\R^d$. La idea central de la demostración de esta generalización es reducir la dimensión de los conjuntos mediante proyecciones en una dirección adecuada y utilizar el resultado anterior. Antes de proceder con el resultado necesitamos introducir algunos conceptos.
 
-then
-$$\lvert A + B \rvert \geq \left( \frac{\lvert A \rvert }{\lvert \pi (A) \rvert} + \frac{\lvert B \rvert }{\lvert \pi (B) \rvert } - 1\right) \left( \lvert \pi(A) \rvert + \lvert \pi(B) \rvert - 1 \right).$$
-Where $\pi: \R^n \rightarrow H$ is the orthogonal projection of $\R^n$ on $H$.
-\end{theorem}
+Sea $H$ un subespacio de $\R^d$. El mapeo $p: \R^d \mapsto H$ definido como $v \mapsto \sum_{i=1}^k (v \cdot w_i) \ w_i$  se le conoce como \textit{proyección ortogonal} de $\R^d$ en $H$. Geométricamente, si $v$ es un punto $\R^d$, $p(v)$ es el punto en $H$ de la recta que pasa por $v$ y es ortogonal a $H.$  
+
+Sea $A$ un conjunto finito en $\R^d$. Denotemos por $L(A)$ el conjunto de líneas $l$ que pasan por el origen en $\R^d$ tales que 
+$$\lvert (l + x) \cap A \rvert > 1,$$
+para alguna $x \in \R^d$. En otras palabras, $L(A)$ es el conjunto de rectas que intersectan a $A$ en más de dos puntos. Note que $L(A)$ es finito, pues $A$ es finito y existe una única línea que pasa por dos puntos. Por finitud, escojamos una recta $H$ que pasa por el origen en $\R^d$ que no pertenece a $L(A)$. Si $q: \R^d \rightarrow H^\perp$ es la proyección ortogonal de $\R^d$ en $H^\perp$, entonces
+
+$$\lvert q(A) \rvert = \lvert A \rvert.$$
+
+Es decir, la proyección de $A$ en la dirección de $H$ conserva su cardinalidad. Queda claro que para generalizar el Teorema 1, solo queda encontrar una dirección que al momento de proyectar $A$ conserve el número de rectas paralelas que cubren a $A$.
 
 
-\section{Some Lemmas}
-Let $\Delta$ be a finite set of $\R^n.$ Denote by $L(\Delta)$ the set of all lines of $\R^n$ through the origin such that 
+
+Sea $L$ una recta que pasa por el origen en $\R^d$. Definamos a $C(A, L)$ al conjunto finito mínimo de líneas paralelas a $L$ que cubren a $A.$  
+
+Recuerde que dos líneas paralelas distintas definen un único plano en $\R^d$. 
+
+Definamos $P(A, L)$ al conjunto de planos que contienen a dos rectas para 
+
+Let $C(A,L)$ be the minimum finite set of parallel lines to $L$ that covers $A$. Recall that any pair of parallel lines define a unique plane. Let $P(A, L)$ be the set of planes defined by every possible pair of lines in $C(A,L)$. Notice that $P(A, L)$ is finite, since $C(A,L)$ is finite. 
 
 \begin{lemma}
-Theorem \ref{res} is true in all dimensions when $k=1.$
+    Let $A$ be a finite subset of $\R^d$ and let $L$ be a line through the origin in $\R^d$. Then there is a line $K$ through the origin in $\R^d$ such that
+    \begin{itemize}
+        \item[i)] $\lvert A \rvert  = \lvert p_{K^\perp}(A) \rvert$;
+        \item[ii)] the number of lines parallel to $L$ that covers $A$ in $\R^d$ equals the number of lines parallel to $p_{K^\perp}(L)$ that covers $p_{K^\perp}(A)$ in $K^\perp.$
+        
+    \end{itemize}
 \end{lemma}
 \begin{proof}
-We will prove the lemma by induction on $n$. By Theorem \ref{GS}, the lemma is true for $n = 2.$ Now suppose that the lemma is true for $n\leq m - 1.$ Let $A, B \subset \R^{m-1}$ be finite subsets and let $L$ be a $1-$dimensional subspace of $\R^m.$
+
+Choose a line $K$ through the origin in $\R^d$ that is not $L$, it is not a member of $L(A)$, and it is not contained in any of the planes of $P(A,L)$  (we can do this because $L \cup L(A) \cup P(A,L)$ is finite). 
+\begin{itemize}
+\item[i)]  Suppose that there are $a, a^\prime \in A$ such that $p_{K^\perp}(a) = p_{k^\perp}(a^\prime).$ By Lemma 1, $a - a^\prime \in K.$ But this means that $a$ and $a^\perp$ belong to the same line parallel to $K$. But since $K$ is not a line in $L(A)$ and is not $L$, we have that $a = a^\prime.$ Therefore $\lvert A \rvert  = \lvert p_{K^\perp}(A) \rvert$.
+\item[ii)] Now suppose that $p_{K^\perp}(x + L) = p_{K^\perp}( y + L)$ for $x + L, y + L$ in $C(A, L).$ Then $p_{K^\perp}(x-y) \in p_{K^\perp}(L)$. Since $K$ is not contained in any of the planes in $P(A, L)$, we have that $x + L = y + L.$ 
+\end{itemize}
 \end{proof}
+
+Lemma 3 can be applied iteratively to any finite union of finite sets. That is the key to prove the next Theorem.
+
+\begin{theorem}
+    Theorem 1 is also true in dimension 3.
+\end{theorem}
+\begin{proof}
+    Let 
+    $$\Omega = A \cup B \cup (A + B) \cup p_{L^\perp}(A) \cup p_{L^\perp}(B) \cup p_{L^\perp}(A+B) \subset \R^3.$$
+    By Lemma 3, we can choose a line $K$ through the origin in $\R^3$ such that
+    $\lvert p_{K^\perp}(A) \rvert = \lvert A \rvert$, $\lvert p_{K^\perp}(B) \rvert = \lvert B \rvert$, $\lvert p_{K^\perp}(A + B) \rvert = \lvert A + B\rvert$, $\lvert p_{L^\perp}(p_{K^\perp}(A)) \rvert = \lvert p_{L^\perp}(A) \rvert$ and $\lvert p_{L^\perp}(p_{K^\perp}(B)) \rvert = \lvert p_{L^\perp}(B) \rvert$. Thus, by Theorem 1
+    $$\lvert   p_{K^\perp}(A) +  p_{K^\perp}(B) \rvert \geq \left( \frac{\lvert  p_{K^\perp}(A) \rvert }{\lvert  p_{L^\perp}(p_{K^\perp}(A))  \rvert} + \frac{\lvert  p_{K^\perp}(B) \rvert }{\lvert  p_{L^\perp}(p_{K^\perp}(B))  \rvert } - 1\right) \left( \lvert p_{K^\perp}(A) \rvert + \lvert p_{K^\perp}(B) \rvert - 1 \right).$$ And by Lemma 2 we have,
+     $$\lvert A + B \rvert \geq \left( \frac{\lvert A \rvert }{\lvert p_{L^\perp}(A) \rvert} + \frac{\lvert B \rvert }{\lvert p_{L^\perp} (B) \rvert } - 1\right) \left( \lvert p_{L^\perp}(A) \rvert + \lvert p_{L^\perp}(B) \rvert - 1 \right).$$
+\end{proof}
+
+
+\begin{theorem}
+    Theorem 2 is also true if we replace the line $L$ by a plane $H$ in $\R^3.$
+\end{theorem}
+\begin{proof} (\textit{Sketch})
+    Let $K$ be a line through the origin such that $K \subset H$ with the same properties as the proof of Theorem 1. Repeat the reasoning.  
+\end{proof}
+
+
+
+
+
 \end{document}
