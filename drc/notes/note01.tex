@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{mathpazo,amsfonts}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{tikz}
+
+
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+% \addbibresource{blb.bib}
+
+\pagestyle{fancy}
+
+\lhead{Nota 01}
+\chead{Luis González}
+\rhead{1 de febrero de 2025}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+%\newtheorem{def}[section]{Definicion}
+\newtheorem{prop}[section]{Proposición}
+\newtheorem{lema}[section]{Lema}
+
+\begin{document}
+\section*{Aplicaciones Rapidas}
+\begin{lema}[Lema basico]
+    Sean $a, d, m, n, r$ enteros positivos. Sea $G = (V, E)$ una grafica en $\vert V \vert = n$ vertices y grado promedio $d = 2 \vert E(G) /n$. Si existe un entero positivo $t$ tal que 
+    $$\frac{d^t}{n^{t-1}} - \binom{n}{r} \left(\frac{m}{n}\right)^t \ge a,$$
+    entonces $G$ contiene un subconjunto $U$ con al menos $a$ vertices tal que cada $r$ vertices en $U$ tiene al menos $m$ vecinos en comun.
+\end{lema}
+\begin{proof}
+    Seleccione un conjunto $T$ de $t$ vertices en $V$ uniformemente al azar? con repeticion. Sea $A = N(T)$
+\end{proof}
+\end{document}
