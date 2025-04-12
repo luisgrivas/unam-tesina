@@ -83,7 +83,34 @@ y $c = \max(a^{1/r}, \frac{3(a + b)}{r})$. Entonces
   Demostraremos que $f$ se puede extender a $B$ de tal manera que
   esta extensión es un encaje de $H$ en $G$.
 
+  Sean $k \geq 2$ y $s \geq 1$ enteros y defina la siguiente gráfica
+  bipartita $L^{k, s}$ con partes $X$ y $Y$ como sigue. $X = \{x_0\}
+  \cup \{x_{i,j}^\alpha: 1 \leq i < j \leq k, \alpha = 1, \ldots s
+  \}$ y $Y = \{y_1, \ldots, y_k\}$. Una $x_0$ con cada vértice de
+  $Y$, y una $x^{\alpha}_{i, j}$ a $y_i$ y $y_j$. Se entenderá que
+  $L^k = L^{k, 1}$.
+
+  \begin{lema}
+    Suponga que $\mathcal{A}$, con $\vert \mathcal{A} \vert  = a$, es
+    una colección de subconjuntos de un conjunto $S$ con $n$
+    elementos con tamaño promedio $b$; esto es
+    $\sum \vert A_i \vert / a = b$. Sean $k \geq t \geq 2$ y $d >
+     g \geq 1$ enteros, y suponga que
+    $$ \binom{d-1}{g} \binom{a}{t} \binom{k-1}{t-1} < \binom{n}{g}
+    \binom{ a \binom{b}{g} / \binom{n}{g}}{t - 1} \frac{ a
+    \binom{b}{g} / \binom{n}{g} - (k-1)}{t}.$$
+    Entonces existen $k$ miembros $A_1 \ldots, A_k$ en $\mathcal{A}$,
+    tal que $\vert \cap A_i \vert \geq g$ y en el que el tamaño de la
+    intersección de cada $t$ de ellos es al menos $d$. %TODO: mejorar redaccion
+  \end{lema}
+
+  \begin{theorem}
+    $$e (n, L^{k, s}) < n \frac{k-1}{4} + n^{3/2} \sqrt{\frac{sk (k -
+    1)^2 + 2(k - 2)(k-1)}{8}}$$
+  \end{theorem}
+
   El siguiente texto presenta notas sobre el trabajo realizado en
   \cite{furedi1991}.
 
+  \printbibliography
   \end{document}

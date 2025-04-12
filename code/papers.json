@@ -1,0 +1,26 @@
+[
+    {
+        "paper_id": 1,
+        "authors": ["Zoltan Furedi"],
+        "title": "On a Turán type problem of Erdos",
+        "abstract": "Let $L_k$ be the graph formed by the lowest three levels of the Boolean lattice $B_k$, ...",
+        "link": "https://doi.org/10.1007/BF01375476",
+        "year": 1991,
+        "keywords": ["extremal combinatorics", "Turán Numbers"],
+        "comments": "En este paper se calcula el número extremal para un tipo especial de gráficas. Resulta ser que estos resultados pueden ser utilizados para demostrar el número extremal para gráficas bipartitas con grado máximo en una de sus partes igual a $r$." ,
+        "cited_by": [2],
+        "citations": [] ,
+    },
+    {
+        "paper_id": 2,
+        "authors": ["Jacob Fox", "Benny Sudakov"],
+        "title": "Dependent Random Choice",
+        "abstract": "We describe a simple and yet surprisingly powerful probabilistic technique which shows how to find in a dense graph a large subset of vertices in which all (or almost all) small subsets have many common neighbors. Recently this technique has had several striking applications to Extremal Graph Theory, Ramsey Theory, Additive Combinatorics, and Combinatorial Geometry.",
+        "link": "https://arxiv.org/abs/0909.3271",
+        "year": 2010,
+        "keywords": ["dependent random choice", "probabilistic method", "extremal combinatorics"],
+        "comments": "Este es el paper central de la tesis. En este trabajo se presentan distintas versiones de Dependent Random Choice y distintas aplicaciones en combinatoria." ,
+        "cited_by": [],
+        "citations": [1] ,
+    }
+]
