@@ -1,0 +1,127 @@
+\documentclass[14pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{tikz}
+
+\usepackage[
+  backend=biber,
+  style=alphabetic,
+  sorting=ynt
+]{biblatex}
+
+\addbibresource{../blb.bib}
+
+\pagestyle{fancy}
+
+\lhead{Luis González}
+\chead{Dependent Random Choice}
+\rhead{11 de abril de 2025}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+
+%\newtheorem{defi}[section]{Definición}
+\newtheorem{prop}[section]{Proposición}
+\newtheorem{lema}[section]{Lema}
+\newtheorem{theorem}{Teorema}
+
+\begin{document}
+\section*{Aplicación de SDA a Gráficas Bipartitas}
+
+Dada una gráfica $H$, el \textit{número de Turán} o \textit{extremal}
+$ex(n, H)$, representa el número máximo de aristas de una gráfica en
+$n$ vértices que no contiene una copia de $H$. En \cite{fox2010drc}
+se presenta el siguiente teorema:
+
+\begin{theorem}
+  Si $H = (A \cup B, F)$ es una gráfica bipartita en la que todos los
+  vértices de $B$ tienen grado
+  a lo más $r$, entonces $ex(n, H) \leq c n^{2 - 1 / r}$, donde $c =
+  c(H)$ es una constante que solo depende de $H$.
+\end{theorem}
+
+La demostración presentada en este trabajo es una aplicación directa
+de \textit{Selección Dependiente Aleatoria} (SDA)
+\begin{theorem}(Lema Básico)\label{drc}
+  Sean $d, m, n, r, u$ enteros positivos. Sea $G$ una gráfica en
+  $n$ vértices y grado promedio $d$. Si existe
+  entero positivo $t$
+  tal que
+  $$\frac{d^t}{n^{t-1}} - \binom{n}{r} \left(\frac{m}{n}\right)^t \geq u$$
+  entonces $G$ contiene un conjunto $U \subset V(G)$ de vértices tal que
+  $\vert U \vert \geq u$ y tal que todo subconjunto $S$ de $U$ con
+  $\vert S \vert = r$
+  tiene al menos $m$ vecinos en común.
+\end{theorem}
+% TODO: hay qu emejorar esto
+\textit{Demostración usando DRC}. Sean $\vert A \vert = a$, $\vert B
+\vert = b$, $m = a + b$, $t = r$
+y $c = \max(a^{1/r}, \frac{3(a + b)}{r})$. Sea $G$ una gráfica con
+$e(G) > 2 c n^{2 -1 /
+r}$. De manera que $d = 2e(G) / n > 2 c n^{1 - 1/r}$. Entonces
+
+\begin{eqnarray*}
+  \frac{d^{t}}{n^{t-1}} - \binom{n}{r} \left(\frac{m}{n}\right)^t &=& \frac{(2c
+  n^{1-1/r})^r}{n^{r-1}}  - \binom{n}{r} \left(\frac{a + b}{n}\right)^r\\
+  &\geq& (2c)^r - \frac{n^r}{r!} \left((\frac{a + b}{n}\right)^r \\
+    &\geq& (2c)^r - \left(\frac{e (a + b)}{r}\right)^r\\
+    &\geq& c^r \geq a
+  \end{eqnarray*}
+  Por tanto, el Teorema \ref{drc} establece que existe un subconjunto
+  $U$ de $V(G)$ tal que $\vert U \vert = a$ y en el que todos sus
+  subconjuntos de tamaño
+  $r$ tienen al menos $a + b$ vecinos en común.
+
+  Sea $f: A \rightarrow U$ una función inyectiva cualquiera.
+  Demostraremos que $f$ se puede extender a $B$ de tal manera que
+  esta extensión es un encaje de $H$ en $G$. Etiquete los vértices de $B$ como
+  $v_1, \ldots, v_b$. Suponga que el vértice por encajar es $v_i \in
+  B$. Sea $N_i \subset A$ la vecindad de $v_i$ en $H$; por lo que
+  $\vert N_i \vert \leq r$. Dado que $f(N_i)$ es un subconjunto de
+  $U$ de cardinalidad a lo más $r$, existen al menos $a + b$ vértices
+  adyacentes a todos los vértices en $f(N_i)$. Como el total de
+  vértices por encajar es $a + b$, existe un vértice $v \in V(G)$ que
+  no se ha usado en el encaje y que es adyacente a $f(N_i)$ en $G$.
+  Haga $f(v_i)  = v$. Se observa que este procedimiento puede
+  continuar hasta terminar de definir $f(v_i)$ para todo $i = 1,
+  \ldots, b$. Por tanto $f$ es un encaje de  $H$ en $G$.
+
+  Sean $k \geq 2$ y $s \geq 1$ enteros y defina la siguiente gráfica
+  bipartita $L^{k, s}$ con partes $X$ y $Y$ como sigue. $X = \{x_0\}
+  \cup \{x_{i,j}^\alpha: 1 \leq i < j \leq k, \alpha = 1, \ldots s
+  \}$ y $Y = \{y_1, \ldots, y_k\}$. Una $x_0$ con cada vértice de
+  $Y$, y una $x^{\alpha}_{i, j}$ a $y_i$ y $y_j$. Se entenderá que
+  $L^k = L^{k, 1}$.
+
+  \begin{lema}
+    Suponga que $\mathcal{A}$, con $\vert \mathcal{A} \vert  = a$, es
+    una colección de subconjuntos de un conjunto $S$ con $n$
+    elementos con tamaño promedio $b$; esto es
+    $\sum \vert A_i \vert / a = b$. Sean $k \geq t \geq 2$ y $d >
+    g \geq 1$ enteros, y suponga que
+    $$ \binom{d-1}{g} \binom{a}{t} \binom{k-1}{t-1} < \binom{n}{g}
+    \binom{ a \binom{b}{g} / \binom{n}{g}}{t - 1} \frac{ a
+    \binom{b}{g} / \binom{n}{g} - (k-1)}{t}.$$
+    Entonces existen $k$ miembros $A_1 \ldots, A_k$ en $\mathcal{A}$,
+    tal que $\vert \cap A_i \vert \geq g$ y en el que el tamaño de la
+    intersección de cada $t$ de ellos es al menos $d$. %TODO: mejorar redaccion
+  \end{lema}
+
+  \begin{theorem}
+    $$e (n, L^{k, s}) < n \frac{k-1}{4} + n^{3/2} \sqrt{\frac{sk (k -
+    1)^2 + 2(k - 2)(k-1)}{8}}$$
+  \end{theorem}
+
+  El siguiente texto presenta notas sobre el trabajo realizado en
+  \cite{furedi1991}.
+
+  \printbibliography
+  \end{document}

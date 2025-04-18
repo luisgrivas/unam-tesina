@@ -1,0 +1,57 @@
+\chapter{Teoría Extremal}
+
+\section{La Subgráfica Prohibida}
+Dada una gráfica $H$, el \textit{número de Turán} o \textit{extremal}
+$ex(n, H)$, representa el número máximo de aristas de una gráfica en
+$n$ vértices que no contiene a $H$, \textit{subgráfica prohibida},
+como subgráfica.
+
+\section{Teorema de Turán}
+Una gráfica \textit{$k-$ partita} es aquella cuyo conjunto de
+vértices puede ser particionado en $k$ subconjuntos, o
+\textit{partes}, de tal manera que ninguna arista tiene como extremos
+a vértices de una misma parte. Una gráfica $k-$partita es
+\textit{completa} si cualesquiera dos vértices en diferentes partes
+son adyacentes. Una gráfica completa $k$-partita en $n$ vértices
+cuyas partes tienen tamaños que difieren a lo más en un vértice se
+les conoce como  \textit{gráficas de Turán} y se denotan como $T_{k, n}$.
+\begin{theorem} \label{turan}
+  Sea $G$ una gráfica simple que no contiene a $K_k$, para $k \geq
+  2$. Entonces $e(G) \leq e(T_{{k-1}, n})$, con igualdad si y solo si
+  $G \simeq T_{{k-1}, n}$.
+\end{theorem}
+
+% TODO: agregar cita de Zykov (1949)
+% TODO: no funcionan las Lambdas.corregir
+% NOTE: demostración del Bondy-Murty
+\begin{proof}
+  Procederemos por inducción sobre $k$. El teorema se satisface
+  trivialmente para $k=2$.  Suponga que se satisface para cualquier
+  entero menor que $k$, y sea $G$ una gráfica simple que no contiene
+  a $K_k$. Seleccione un vértice $v$ con grado máximo $\Lambda$ en
+  $G$. Haga $A = N(v)$ y $B = V \setminus A$. Entonces
+  $$e(G) = e(A) + e(A, B) + e(B).$$
+  Dado que $G$ no contiene a ningún $K_k$, la gráfica inducida $G[A]$
+  no contiene a $K_{k-1}$. Por tanto, por inducción,
+  $$e(A) \leq e(T_{k-2, \Lambda}),$$
+  con igualdad si y solo si $G[A] \simeq T_{{k-2}, \Lambda}$. Además,
+  dado que toda arista de $G$ incidente a un vértice de $B$ pertence
+  a $E[A, B]$ o $E( B )$,
+  $$e(A, B) + e(B) \leq \Lambda (n - \Lambda),$$
+  con igualdad si y solo si $B$ es un conjunto independiente y cuyos
+  miembros tienen grado $\Lambda$. Luego, $e(G) \leq e(H)$, donde $H$
+  es una gráfica obtenida de una copia de $T_{{k-2}, \Lambda}$ y
+  añadiendo una copia de un conjunto independiente de $n-\Lambda$
+  vértices y uniendo cada uno de estos vértices con cada vértice de
+  $T_{{k-2}, \Lambda}$. Observe que $H$ es una gráfica completa
+  $(k-1)$-partita en $n$ vértices. Entonces $e(H) \leq e(T_{{k-1},
+  n})$ con igualdad si y solo si $H \simeq T_{{k-1}, n}$. Se sigue
+  que $e(G) \leq e(T_{k-1, n})$, con igualdad si y solo si $G \simeq
+  T_{k-1, n}$.
+\end{proof}
+% TODO: agregar demostracion usando probabilistic method
+
+\section{Teorema de Erdős-Stone}
+
+\section{Números de Ramsey}
+Un \textit{clique} de una gráfica es un conjunto de vértices todos de ellos adyacentes.

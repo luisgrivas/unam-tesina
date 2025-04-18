@@ -1,0 +1,64 @@
+\chapter{Aplicaciones del Selección Dependiente Aleatoria}
+
+\section{Números de Turán para Gráficas Bipartitas}
+
+\begin{theorem}
+  Si $H = (A \cup B, F)$ es una gráfica bipartita en la que todos los
+  vértices de $B$ tienen grado
+  a lo más $r$, entonces $ex(n, H) \leq c n^{2 - 1 / r}$, donde $c =
+  c(H)$ es una constante que solo depende de $H$.
+\end{theorem}
+\begin{proof}
+  Sean $\vert A \vert = a$, $\vert B
+  \vert = b$, $m = a + b$, $t = r$
+  y $c = \max(a^{1/r}, \frac{3(a + b)}{r})$. Sea $G$ una gráfica con
+  $e(G) > 2 c n^{2 -1 /
+  r}$. De manera que $d = 2e(G) / n > 2 c n^{1 - 1/r}$. Entonces
+
+  \begin{eqnarray*}
+    \frac{d^{t}}{n^{t-1}} - \binom{n}{r} \left(\frac{m}{n}\right)^t
+    &=& \frac{(2c
+    n^{1-1/r})^r}{n^{r-1}}  - \binom{n}{r} \left(\frac{a + b}{n}\right)^r\\
+    &\geq& (2c)^r - \frac{n^r}{r!} \left((\frac{a + b}{n}\right)^r \\
+      &\geq& (2c)^r - \left(\frac{e (a + b)}{r}\right)^r\\
+      &\geq& c^r \geq a
+    \end{eqnarray*}
+    Por tanto, el Teorema \ref{drc} establece que existe un subconjunto
+    $U$ de $V(G)$ tal que $\vert U \vert = a$ y en el que todos sus
+    subconjuntos de tamaño
+    $r$ tienen al menos $a + b$ vecinos en común.
+
+    Sea $f: A \rightarrow U$ una función inyectiva cualquiera.
+    Demostraremos que $f$ se puede extender a $B$ de tal manera que
+    esta extensión es un encaje de $H$ en $G$. Etiquete los vértices de $B$ como
+    $v_1, \ldots, v_b$. Suponga que el vértice por encajar es $v_i \in
+    B$. Sea $N_i \subset A$ la vecindad de $v_i$ en $H$; por lo que
+    $\vert N_i \vert \leq r$. Dado que $f(N_i)$ es un subconjunto de
+    $U$ de cardinalidad a lo más $r$, existen al menos $a + b$ vértices
+    adyacentes a todos los vértices en $f(N_i)$. Como el total de
+    vértices por encajar es $a + b$, existe un vértice $v \in V(G)$ que
+    no se ha usado en el encaje y que es adyacente a $f(N_i)$ en $G$.
+    Haga $f(v_i)  = v$. Se observa que este procedimiento puede
+    continuar hasta terminar de definir $f(v_i)$ para todo $i = 1,
+    \ldots, b$. Por tanto $f$ es un encaje de  $H$ en $G$.
+  \end{proof}
+
+  \section{Números de Ramsey para Cubos}
+  Para una gráfica $H$, el \textit{número de Ramsey} $r(H)$, es el
+  mínimo entero positivo $N$ tal que cualquier \textit{2-coloración}
+  de las aristas de la gráfica completa en $N$ vértices contiene una
+  copia monocrómatica de $H$.
+  \begin{theorem}
+    $r(Q_r) \leq 2^{3r}$.
+  \end{theorem}
+  \begin{proof}
+    En cualquier 2-coloración de las aristas de una gráfica comleta
+    en $N = 2^{3r}$ vértices, el conjunto más denso entre los dos
+    colores tiene al menos
+    $\frac{1}{2} \binom{N}{2} \geq 2^{-7/3} N^2$ aristas. Sea $G$ la gráfica
+    del color más denso. De manera que el grado promedio $d$ de $G$
+    es al menos $2^{-4/3}N$. Aplicando el Teorema \ref{drc} con $t = \frac{3}{2}r$, $m = 2^r$ y $a = 2^{r-1}$. Tenemos que
+    $$\frac{d^t}{N^{t-1}} - \binom{N}{r} \left(\frac{m}{N}\right)^t \geq $$ 
+  \end{proof}
+
+  \section{Un Problema del tipo Turán-Ramsey para Gráficas libres de $K_4$}
