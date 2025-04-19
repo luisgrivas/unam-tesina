@@ -1,8 +1,8 @@
-\chapter{Aplicaciones del Selección Dependiente Aleatoria}
+% \chapter{Aplicaciones del Selección Dependiente Aleatoria}
 
 \section{Números de Turán para Gráficas Bipartitas}
 
-\begin{theorem}
+\begin{theorem}\label{turan-drc}
   Si $H = (A \cup B, F)$ es una gráfica bipartita en la que todos los
   vértices de $B$ tienen grado
   a lo más $r$, entonces $ex(n, H) \leq c n^{2 - 1 / r}$, donde $c =
@@ -57,8 +57,14 @@
     colores tiene al menos
     $\frac{1}{2} \binom{N}{2} \geq 2^{-7/3} N^2$ aristas. Sea $G$ la gráfica
     del color más denso. De manera que el grado promedio $d$ de $G$
-    es al menos $2^{-4/3}N$. Aplicando el Teorema \ref{drc} con $t = \frac{3}{2}r$, $m = 2^r$ y $a = 2^{r-1}$. Tenemos que
-    $$\frac{d^t}{N^{t-1}} - \binom{N}{r} \left(\frac{m}{N}\right)^t \geq $$ 
+    es al menos $2^{-4/3}N$. Aplicando el Teorema \ref{drc} con $t =
+    \frac{3}{2}r$, $m = 2^r$ y $a = 2^{r-1}$, tenemos que
+    $$\frac{d^t}{N^{t-1}} - \binom{N}{r} \left(\frac{m}{N}\right)^t
+    \geq 2^{-4/3 t} N - N^{r-t}m^t / r! \geq 2^r - 1 \geq 2^{r-1}. $$
+    Por tanto, existe un subconjunto $U$ de $G$ de tamaño $2^{r-1}$
+    en el que todo $r$ vértices en $U$ tiene al menos $2^r$ vecinos en común.
+    Dado que $Q_r$ es una gráfica bipartita $r$-regular con partes de
+    tamaño $2^{r-1}$, podemos encontrar un encaje de $Q_r$ en $G$ tal
+    y como lo hicimos en el Teorema \ref{turan-drc}
   \end{proof}
-
-  \section{Un Problema del tipo Turán-Ramsey para Gráficas libres de $K_4$}
+  % \section{Un Problema del tipo Turán-Ramsey para Gráficas libres de $K_4$}
