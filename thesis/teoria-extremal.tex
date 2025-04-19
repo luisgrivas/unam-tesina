@@ -15,35 +15,35 @@ a vértices de una misma parte. Una gráfica $k-$partita es
 son adyacentes. Una gráfica completa $k$-partita en $n$ vértices
 cuyas partes tienen tamaños que difieren a lo más en un vértice se
 les conoce como  \textit{gráficas de Turán} y se denotan como $T_{k, n}$.
+
 \begin{theorem} \label{turan}
-  Sea $G$ una gráfica simple que no contiene a $K_k$, para $k \geq
+  Sea $G$ una gráfica que no contiene a $K_k$, para $k \geq
   2$. Entonces $e(G) \leq e(T_{{k-1}, n})$, con igualdad si y solo si
   $G \simeq T_{{k-1}, n}$.
 \end{theorem}
 
 % TODO: agregar cita de Zykov (1949)
-% TODO: no funcionan las Lambdas.corregir
 % NOTE: demostración del Bondy-Murty
 \begin{proof}
   Procederemos por inducción sobre $k$. El teorema se satisface
   trivialmente para $k=2$.  Suponga que se satisface para cualquier
   entero menor que $k$, y sea $G$ una gráfica simple que no contiene
-  a $K_k$. Seleccione un vértice $v$ con grado máximo $\Lambda$ en
+  a $K_k$. Seleccione un vértice $v$ con grado máximo $\Delta$ en
   $G$. Haga $A = N(v)$ y $B = V \setminus A$. Entonces
   $$e(G) = e(A) + e(A, B) + e(B).$$
   Dado que $G$ no contiene a ningún $K_k$, la gráfica inducida $G[A]$
   no contiene a $K_{k-1}$. Por tanto, por inducción,
-  $$e(A) \leq e(T_{k-2, \Lambda}),$$
-  con igualdad si y solo si $G[A] \simeq T_{{k-2}, \Lambda}$. Además,
+  $$e(A) \leq e(T_{k-2, \Delta}),$$
+  con igualdad si y solo si $G[A] \simeq T_{{k-2}, \Delta}$. Además,
   dado que toda arista de $G$ incidente a un vértice de $B$ pertence
   a $E[A, B]$ o $E( B )$,
-  $$e(A, B) + e(B) \leq \Lambda (n - \Lambda),$$
+  $$e(A, B) + e(B) \leq \Delta (n - \Delta),$$
   con igualdad si y solo si $B$ es un conjunto independiente y cuyos
-  miembros tienen grado $\Lambda$. Luego, $e(G) \leq e(H)$, donde $H$
-  es una gráfica obtenida de una copia de $T_{{k-2}, \Lambda}$ y
-  añadiendo una copia de un conjunto independiente de $n-\Lambda$
+  miembros tienen grado $\Delta$. Luego, $e(G) \leq e(H)$, donde $H$
+  es una gráfica obtenida de una copia de $T_{{k-2}, \Delta}$ y
+  añadiendo una copia de un conjunto independiente de $n-\Delta$
   vértices y uniendo cada uno de estos vértices con cada vértice de
-  $T_{{k-2}, \Lambda}$. Observe que $H$ es una gráfica completa
+  $T_{{k-2}, \Delta}$. Observe que $H$ es una gráfica completa
   $(k-1)$-partita en $n$ vértices. Entonces $e(H) \leq e(T_{{k-1},
   n})$ con igualdad si y solo si $H \simeq T_{{k-1}, n}$. Se sigue
   que $e(G) \leq e(T_{k-1, n})$, con igualdad si y solo si $G \simeq
@@ -51,7 +51,62 @@ les conoce como  \textit{gráficas de Turán} y se denotan como $T_{k, n}$.
 \end{proof}
 % TODO: agregar demostracion usando probabilistic method
 
-\section{Teorema de Erdős-Stone}
+Sea $G$ una gráfica. Recuerde que un conjunto independiente $S$ de
+vértices en $G$ es aquel en el que ninguna arista en $G$ tiene como
+extremos dos vértices en $S$. De manera complementaria, un clique $C$
+en $G$ es un conjunto de vértices en $G$ en el cual cualquier par de
+vértices es adyacente. Es decir, un clique $C$ con $\vert C \vert =
+k$ induce una gráfica isomorfa a $K_k$, $G[C] \equiv K_k$. Por tanto
+el Teorema de Turán puede reescribirse como \textit{toda gráfica $G$
+  en $n$ vértices y con más de $e(T_{k-1, n})$ aristas contiene un
+clique de orden $k$}.
+
+Los conjuntos independientes y los cliques están relacionados de la siguiente
+manera. Para una gráfica $G$, sea $\alpha(G)$ la cardinalidad del conjunto
+independiente de vértices más grande en $G$. Y sea $\omega(G)$ la
+cardinaliad del
+clique más grande en $G$. Entonces
+$$\omega(G) = \alpha(\bar{G}),$$
+donde $\bar{G}$ es la gráfica complemento de $G$. Por tanto, toda
+proposición cierta para cliques puede reescribirse en términos de
+conjuntos independientes. Tal es el caso del Teorema de Turán. El
+siguiente resultado fue demostrado por
+Caro \cite{caro1979} y Wei  %TODO: agregar la cita de wei
+
+\begin{theorem} (Caro y Wei)
+  Sea $G = (V, E)$ una gráfica. Entonces $$ \alpha(G) \geq \sum_{v
+  \in V} \frac{1}{d(v) + 1}.$$
+\end{theorem}
+
+%TODO: cambiar simbolo de orden
+\begin{proof}
+  Sea $<$ una orden total de $V$ elegido uniformemente. Defina
+  $$I = \{v \in V: vw \in E \Rightarrow v < w \}.$$
+  Sea $X_{v}$ la variable aleatoria indicadora para $v \in I$ y $X =
+  \sum_{v \in V} X_v = \vert I \vert$. Para cada $v$,
+  $$E[X_v] = Pr[v \in I] = \frac{1}{d(v) + 1},$$
+  dado que $v \in I$ si y solo si $v$ es el elemento menor entre $v$
+  y sus vecinos. Luego
+  $$ E[X] = \sum_{v \in V} \frac{1}{d(v) + 1}. $$
+  Por tanto existe un orden total $<$ con
+  $$\vert I \vert \ge \sum_{v \in V} \frac{1}{d(v)  +1 }.$$
+  Pero si $x, y \in I$ y $xy \in E$ entonces $x < y$ y $y < x$, una
+  contradicción. Por tanto $I$ es un conjunto independiente y
+  $\alpha(G) \ge \vert I \vert.$
+\end{proof}
+
+% TODO: revisar el statement del teorema
+\begin{theorem} (Turán)
+  Sea $G$ una gráfica en $n$ vértices y $e(G) \le e(T_{k-1, n})$
+  aristas. Entonces $\alpha(G) \geq k$ con $\alpha(G) = k$ si y solo
+  si $G \equiv T_{k-1, n}$.
+\end{theorem}
+
+\begin{proof} % TODO: completar
+    La gráfica $T_{k-1, n}$ tiene $\sum_{v \in V}(d(v) + 1)^{-1} = $
+\end{proof}
+\section{Teorema de Erdős-Stone} %TODO: no se si esto lo vaya a incluir
 
 \section{Números de Ramsey}
-Un \textit{clique} de una gráfica es un conjunto de vértices todos de ellos adyacentes.
+Un \textit{clique} de una gráfica es un conjunto de vértices todos de
+ellos adyacentes.
