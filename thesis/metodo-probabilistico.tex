@@ -2,13 +2,29 @@
 
 \chapter{El Método Probabilístico}
 
-\section{Gráficas Aleatorias}
-
 \section{El método básico}
 
 \section{La linealidad del valor esperado}
 
 \section{Selección Dependiente Aleatoria}
+Para un vértice $v$ en una gráfica $G$, sea $N(v)$ el conjunto de
+vecinos de $v$ en $G$. Dado un subconjunto de vértices $U \subset
+V(G)$, la \textit{vecindad común} $N(U)$ de $U$ en $G$ es el conjunto
+de todos los vértices en $G$ que son adyacentes a todo vértice de $U$.
+Un $d-$conjunto es un conjunto de cardinalidad $d$. Para $A$
+conjunto, denotaremos a $\binom{A}{d}$ como la familia de
+$d-$subconjuntos de $A$.
+
+\begin{theorem}
+  Sea $t$ un entero positivo. Sea $G$ una gráfica en $n$ vértices con
+  grado promedio $d = \epsilon n$.
+  Entonces $G$ continee un conjunto de $t$ vértices cuya vecindad
+  tiene al menos $\epsilon^t n - \binom{t}{2}$ vecinos en común.
+\end{theorem}
+\begin{proof}
+    Sean $v_1, \ldots, v_t$ vértices en $V(G)$.
+
+\end{proof}
 
 \begin{theorem}(Lema Básico)\label{drc}
   Sean $d, m, n, r, u$ enteros positivos. Sea $G$ una gráfica en
@@ -21,4 +37,44 @@
   $\vert S \vert = r$
   tiene al menos $m$ vecinos en común.
 \end{theorem}
+\begin{proof}
+  Seleccione $t$ vértices $v_1, \ldots, v_t$ elegidos uniformemente
+  con repetición y defina $T = \{v_1, \ldots, v_t\}$. Sea $A = N(T)$,
+  la vecindad de $T$ en $G$. ¿Cuál es la cardinalidad de $A$? Por
+  linealidad del valor esperado, se tiene que
+  \begin{eqnarray*}
+    E[\vert A \vert] &=& \sum_{v \in V(G)} Pr(v \in A)\\
+    &=& \sum_{v \in V(G)} \left(\frac{\vert N(v) \vert}{n} \right)^t\\
+    &=& n^{-t} \sum_{v \in V(G)} \vert N(v) \vert^t \\
+    &\ge& n^{1-t}\left( \frac{\sum_{v \in V(G)} \vert N(v) \vert}{n} \right)^t\\
+    &=& \frac{d^t}{n^{t-1}},
+  \end{eqnarray*}
+  donde la desigualdad se debe a la convexidad de la función $z \mapsto z^t$.
 
+  Sea $Y$ la variable aleatoria que cuenta
+  el número de conjuntos $S$ en $\binom{A}{r}$ que tienen menos de
+  $m$ vecinos en común. Note que la probabilidad de que un
+  $r-$conjunto de vértices cualquiera sea subconjunto de $A$ es
+  $\left( \frac{\vert N(S) \vert}{n}\right)^t$. A lo más existen
+  $\binom{n}{r}$ subconjuntos $r-$subconjuntos con $\vert N(S)\vert < m$. Luego,
+  $$ E[Y] < \binom{n}{r}\left(\frac{m}{n}\right)^t. $$
+  Por linealidad del valor esperado,
+  $$E[X - Y] \geq \frac{d^t}{n^{t-1}} - \binom{n}{r}\left(\frac{m}{n}
+  \right)^t  \ge u.$$
+  Por tanto existe una elección de $T$ en el cual el conjunto $A =
+  N(T)$ satisface que $X - Y \ge u$.
+  Sea $U$ el conjunto resultante al borrar un vértice de cada
+  $r$-subconjunto $S$ de $A$ que tenga menos de $m$ vecinos en común.
+  Entonces $\vert U \vert \ge u$ y todos los $r-$subconjuntos de $U$
+  tienen al menos $m$ vecinos en común.
+\end{proof}
+
+\begin{theorem}
+  Si $\epsilon > 0$ y $d\leq n$ son enteros positivos, y $G = (V, E)$
+  es una gráfica con
+  $N > 4d\epsilon^{-d}n$ vértices y al menos $\epsilon N^2 / 2$
+  aristas, entonces existe un
+  subconjunto $U$ de vértices de $G$ con $\vert U \vert > 2n$ tal que
+  la fracción de $d-$conjuntos $S \subset U$ con $\vert N(S) < n$ es
+  menor que $(2d)^{-d}$.
+\end{theorem}
