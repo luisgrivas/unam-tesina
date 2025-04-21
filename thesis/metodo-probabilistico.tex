@@ -50,28 +50,28 @@ Recuerde que la integral (de Lebesgue) satisface las propiedades de
 linealidad. Por lo que, el valor esperado satisface el siguiente Teorema.
 
 \begin{theorem}
-    Sean $X_1, \ldots, X_n$ variables aleatorias y sean $X = c1 X_1 +
-    \ldots + c_n X_n$, donde $c_i$ son números reales. La
-    \textit{linealidad del valor esperado} establece que
-    $$ \E[X] = c_1 \E[X_1] + \ldots + c_n \E[X_n]. $$
+Sean $X_1, \ldots, X_n$ variables aleatorias y sean $X = c1 X_1 +
+\ldots + c_n X_n$, donde $c_i$ son números reales. La
+\textit{linealidad del valor esperado} establece que
+$$ \E[X] = c_1 \E[X_1] + \ldots + c_n \E[X_n]. $$
 \end{theorem}
 
 \begin{theorem}
-    Toda gráfica con $m$ vértices contiene una gráfica bipartita con $m
+Toda gráfica con $m$ vértices contiene una gráfica bipartita con $m
 / 2$ aristas.
 \end{theorem}
 \begin{proof}
-    Sea $G = (V, E)$ una gráfica. Asigne un color, blanco o negro, a
-    cada vértice de $G$  de manera uniforme e independiente.
+Sea $G = (V, E)$ una gráfica. Asigne un color, blanco o negro, a
+cada vértice de $G$  de manera uniforme e independiente.
 
-    Sea $E^\prime$ el conjunto de aristas con un extremo negro y otro
-    blanco. La gráfica $H = (V, E^\prime)$ es una subgráfica bipartita de $G$.
-    Toda arista de $G$ pertenece a $E^\prime$ con probabilidad $1/2$.
-    Por linealidad del valor esperado, el tamaño esperado de $E^\prime$ es
-    $$\E[\vert E^\prime \vert] = \frac{1}{2} \vert E \vert.$$
-    Entonces existe una coloración de tal manera que $\vert E^\prime
-    \vert \ge \frac{1}{2}\vert E \vert$. La gráfica $H = (V, E^\prime)$
-    es la subgráfica deseada.
+Sea $E^\prime$ el conjunto de aristas con un extremo negro y otro
+blanco. La gráfica $H = (V, E^\prime)$ es una subgráfica bipartita de $G$.
+Toda arista de $G$ pertenece a $E^\prime$ con probabilidad $1/2$.
+Por linealidad del valor esperado, el tamaño esperado de $E^\prime$ es
+$$\E[\vert E^\prime \vert] = \frac{1}{2} \vert E \vert.$$
+Entonces existe una coloración de tal manera que $\vert E^\prime
+\vert \ge \frac{1}{2}\vert E \vert$. La gráfica $H = (V, E^\prime)$
+es la subgráfica deseada.
 \end{proof}
 
 % \section{Desigualdad de Jensen}
@@ -80,12 +80,12 @@ linealidad. Por lo que, el valor esperado satisface el siguiente Teorema.
 
 \subsection{Kovari-Sos-Turán}
 \begin{theorem}[Kovari-Sos-Turán]
-    Sean $2 \leq s \leq t$ y sea $K_{s,t}$ la gráfica bipartita
-    completa con $s + t$ vértices. Entonces existe una constante $c =
-    c(s, t) > 0$ tal que
-    la gráfica en $n$ vértices que no contiene una copia de $K_{s, t}$
-    tiene a lo más
-    $c n^{2 - 1/s}$ aristas.
+Sean $2 \leq s \leq t$ y sea $K_{s,t}$ la gráfica bipartita
+completa con $s + t$ vértices. Entonces existe una constante $c =
+c(s, t) > 0$ tal que
+la gráfica en $n$ vértices que no contiene una copia de $K_{s, t}$
+tiene a lo más
+$c n^{2 - 1/s}$ aristas.
 \end{theorem}
 \begin{proof}
 Sea $G$ una gráfica con a lo más $cn^{2 - 1/s}$ aristas.
@@ -96,10 +96,11 @@ $v_i$, existen exactamente $\binom{d(v_i)}{t}$ conjuntos $\{v_1,
 \end{proof}
 
 \subsection{Selección Dependiente Aleatoria}
-Para un vértice $v$ en una gráfica $G$, sea $N(v)$ el conjunto de
-vecinos de $v$ en $G$. Dado un subconjunto de vértices $U \subset
-V(G)$, la \textit{vecindad común} $N(U)$ de $U$ en $G$ es el conjunto
-de todos los vértices en $G$ que son adyacentes a todo vértice de $U$.
+% Para un vértice $v$ en una gráfica $G$, sea $N(v)$ el conjunto de
+% vecinos de $v$ en $G$. Dado un subconjunto de vértices $U \subset
+% V(G)$, la \textit{vecindad común} $N(U)$ de $U$ en $G$ es el conjunto
+% de todos los vértices en $G$ que son adyacentes a todo vértice de $U$.
+
 Un $d-$conjunto es un conjunto de cardinalidad $d$. Para $A$
 conjunto, denotaremos a $\binom{A}{d}$ como la familia de
 $d-$subconjuntos de $A$.
@@ -191,3 +192,42 @@ subconjunto $U$ de vértices de $G$ con $\vert U \vert > 2n$ tal que
 la fracción de $d-$conjuntos $S \subset U$ con $\vert N(S) < n$ es
 menor que $(2d)^{-d}$.
 \end{theorem}
+\begin{proof}
+Sea $T$ un subconjunto de $d$ vértices escogidos uniformemente con
+repetición. Sea
+$U = N(T)$ y sea $X$ la cardinalidad de $U$. Por linealidad del valor
+esperado y por
+convexidad de la función $z \mapsto z^d$, se tiene que
+\begin{eqnarray*}
+  \E[X] &=& \sum_{v \in V}Pr(v \in U)\\
+  &=& \sum_{v \in V}\left(\frac{\vert N(v) \vert}{N}\right)^d\\
+  &=& N^{-d}\sum_{v \in V} \vert N(V) \vert^d \\
+  &\ge& N^{1-d}\sum_{v \in V} \left( \frac{\sum_{v \in V}\vert
+  N(v)\vert}{N} \right)^d\\
+  &\ge& \epsilon^dN.
+\end{eqnarray*}
+Sea $Y$ la variable aleatoria que cuenta el número de $d$-conjuntos
+en $U$ con menos de
+$n$ vecinos en común. Dado un $d$-conjunto $S$, la probabilidad de
+que $S$ sea subconjunto de $U$
+es $\left(\frac{\vert N(S)\vert}{N} \right)^d$. Por tanto, tenemos que
+$$\E[Y] = \binom{N}{d} \left( \frac{n-1}{N} \right)^d.$$
+
+Por convexidad, $\E[X^d] \ge \E[X]^d$. Luego, por linealidad del
+valor esperado, obtenemos que
+$$\E\left[X^d - \frac{\E[X]^d}{2 \E[Y]} Y - \frac{\E[X]^d}{2} \right] \ge 0.$$
+
+Por tanto, existe una elección de $T$ para el cual la expresión
+anterior no es negativa. Entonces
+$$X^d \ge \frac{1}{2} \E[X]^d \ge \frac{1}{2}\epsilon^{d^2} N^d, $$
+y por tanto $\vert U \vert = X \ge \epsilon^d N / 2 > 2n.$ Además,
+\begin{eqnarray*}
+  Y &\le& 2X^d\E[Y]\E[X]^{-d} \\
+  &<& 2 \vert U \vert^d \binom{N}{d}\left( \frac{n}{N} \right)^d
+  \frac{1}{\epsilon^{d^2} N^d}\\
+  &<& \left( \frac{2n}{\epsilon^d N} \right)^d \binom{\vert U \vert}{d} \\
+  &\le& (2d)^{-d} \binom{\vert U \vert}{d}.
+\end{eqnarray*}
+donde usamos la desigualdad $\vert U \vert^d \le 2^{d-1} d!
+\binom{\vert U \vert}{d}$, que se sigue de $\vert U \vert > 2n \ge 2d$.
+\end{proof}
