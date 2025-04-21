@@ -1,22 +1,44 @@
 % \chapter{Teoría Extremal}
 
 \section{La Subgráfica Prohibida}
-Dada una gráfica $H$, el \textit{número de Turán} o \textit{extremal}
-$ex(n, H)$, representa el número máximo de aristas de una gráfica en
-$n$ vértices que no contiene a $H$, \textit{subgráfica prohibida},
-como subgráfica.
 
-\section{Teorema de Turán}
-Una gráfica \textit{$k-$ partita} es aquella cuyo conjunto de
-vértices puede ser particionado en $k$ subconjuntos, o
-\textit{partes}, de tal manera que ninguna arista tiene como extremos
-a vértices de una misma parte. Una gráfica $k-$partita es
-\textit{completa} si cualesquiera dos vértices en diferentes partes
-son adyacentes. Una gráfica completa $k$-partita en $n$ vértices
-cuyas partes tienen tamaños que difieren a lo más en un vértice se
-les conoce como  \textit{gráficas de Turán} y se denotan como $T_{k, n}$.
+\begin{definition}[Subgráficas Prohibidas] Sea $\mathcal F = \{F_1,
+  \ldots, F_k\}$ una familia de gráficas de orden a lo más $n$. Escribimos
+  $ex(n, \mathcal F) = ex(n, F_1, \ldots, F_k)$ para el máximo número de aristas
+  en una gráfica de orden $n$ que no tiene a ningún $F_i$ como subgráfica.
+\end{definition}
 
-\begin{theorem} \label{turan}
+\begin{definition}[Número de Turán]
+  Dada una gráfica $H$, el \textit{número de Turán} o \textit{extremal}
+  $ex(n, F)$, representa el número máximo de aristas de una gráfica en
+  $n$ vértices que no contiene a $F$, \textit{subgráfica prohibida},
+  como subgráfica.
+\end{definition}
+
+Es de nuestro interés estudiar el comportamiento asintótico de $ex(n,
+\mathcal F)$ cuando $n \to \infty$.
+
+\subsection{Teorema de Turán}
+
+\begin{theorem}[Mantel]
+  Sea $G$ una gráfica de orden $n$ y \textit{libre de triángulos}.
+  Esto es, $G$ no
+  contiene un clique de orden tres. Entonces $e(G) \leq \frac{n^2}{4}$.
+\end{theorem}
+
+\begin{theorem}
+  Sea $G$ una gráfica $k$-partita con partes de tamaño $a_1, \ldots,
+  a_k$. Entonces
+  $e(G) \le \frac{1}{2} \sum_{i=1}^k a_i (n - a_i)$.
+\end{theorem}
+
+\begin{corollary}
+  La gráfica de Turán $T_{k, n}$ es la gráfica $k$-partita completa
+  de orden $n$ con más aristas entre todas las gráficas $k$-partitas
+  completas de ordern $n$.
+\end{corollary}
+
+\begin{theorem}[Turán] \label{turan}
   Sea $G$ una gráfica que no contiene a $K_k$, para $k \geq
   2$. Entonces $e(G) \leq e(T_{{k-1}, n})$, con igualdad si y solo si
   $G \simeq T_{{k-1}, n}$.
@@ -73,7 +95,7 @@ conjuntos independientes. Tal es el caso del Teorema de Turán. El
 siguiente resultado fue demostrado por
 Caro \cite{caro1979} y Wei  %TODO: agregar la cita de wei
 
-\begin{theorem} (Caro y Wei)
+\begin{theorem}[Caro y Wei]
   Sea $G = (V, E)$ una gráfica. Entonces $$ \alpha(G) \geq \sum_{v
   \in V} \frac{1}{d(v) + 1}.$$
 \end{theorem}
@@ -103,9 +125,13 @@ Caro \cite{caro1979} y Wei  %TODO: agregar la cita de wei
 \end{theorem}
 
 \begin{proof} % TODO: completar
-    La gráfica $T_{k-1, n}$ tiene $\sum_{v \in V}(d(v) + 1)^{-1} = $
+  La gráfica $T_{k-1, n}$ tiene $\sum_{v \in V}(d(v) + 1)^{-1} = $
 \end{proof}
-\section{Teorema de Erdős-Stone} %TODO: no se si esto lo vaya a incluir
+\subsection{Teorema de Erdős-Stone} %TODO: no se si esto lo vaya a incluir
+\begin{theorem}
+  Sea $G$ una gráfica. Entonces
+  $$ex(n, G) = \left( 1 - \frac{1}{\chi(G) - 1} + o(1) \right)\frac{n^2}{2}. $$
+\end{theorem}
 
 \section{Números de Ramsey}
 Un \textit{clique} de una gráfica es un conjunto de vértices todos de

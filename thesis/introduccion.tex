@@ -1,27 +1,41 @@
 % \chapter{Introducción}
 
 \section{Preliminares}
-Una gráfica $G$ es una pareja ordenada $(V(G), E(G))$, donde $V(G)$
-es un conjunto de \textit{vértices},  $E(G)$ es un conjunto de
-\textit{aristas} disjunto de $V(G)$ y una \textit{función de
-incidencia} $\psi_G$ que asocia a una arista de $G$ una pareja
-de vértices (no necesariamente distintos) de $G$.
+\begin{definition}
+  Una gráfica $G$ es una pareja ordenada $(V, E)$, donde $V$
+  es un conjunto cuyos elementos llamamos \textit{vértices} y $E$ es
+  un conjunto cuyos elementos son parejas de vértices y que llamamos
+  \textit{aristas}.
+  %TODO: ver libros de olimpiadas para ver las def en español
+\end{definition}
 
 Si $e$ es una arista y $u$ y $v$ son vértices tal que $\psi_G(e)
 = \{u, v\}$, entonces se dice que $e$ \textit{une} a los vértices
 $u$ y $v$, y a estos vértices se les conoce como \textit{extremos} de $e$.
-
-% Denotamos por $v(G)$ y $e(G)$ la cardinalidad de $V(G)$ y $E(G)$
-% respectivamente.
-
 El grado de un vértice $v$, denotado como $d(v)$, es el número de
 aristas en $G$ que inciden en $v$.
 
-\begin{theorem}[del saludo] Para cualquier gráfica $G$ con $m$
+\begin{definition}
+  Sea $v$ un vértice en una gráfica $G$. Definimos a la vecindad
+  $N(v)$ de $v$ como el conjunto de todos los vértices adyacentes a
+  $v$ en $G$. De
+  manera similar, sSi $U$ es un conjunto, definimos a la vencidad de $U$ como
+  el conjunto de vértices en $G$ adyacentes a todo vértice de $U$.
+\end{definition}
+
+\begin{definition}
+  El grado $d(v)$ de un vértice $v$ en una gráfica $G$ es la
+  cardinalidad de la vecindad de $v$, y escribimos
+  $d(v) = \vert N(v) \vert$. Al grado máximo en una gráfica $G$ lo
+  denotamos como $\Delta$. El \textit{grado promedio} en una gráfica
+  se define como $d = \sum_{v \in V} d(v) / n$.
+\end{definition}
+
+\begin{theorem}[del Saludo] Para cualquier gráfica $G$ con $m$
   aristas se tiene que
   $$\sum_{v \in V(G)} d(v) = 2m.$$
 \end{theorem}
-
+%TODO: proof
 El \textit{grado promedio} $\bar{d}$ de una gráfica $G$ en $n$
 vértices es $\sum_{ v
 \in V(G)} d(v) / n$. Así pues, el Teorema anterior implica que
@@ -30,12 +44,42 @@ vértices es $\sum_{ v
   Para cualquier gráfica $G$, se tiene que $\bar{d} = 2 e(G) /n.$
 \end{corollary}
 
-Una gráfica es \textit{bipartita} si sus vértices pueden ser divididos
-en dos subconjuntos disjuntos $A$ y $B$, llamados \textit{partes}, de
-tal manera que todas las aristas de $G$ tienen un extremo en $A$ y el
-otro en $B$. Frecuentemente, denotaremos a una gráfica bipartia $H$
-con partes $A$ y $B$ como $G[A, B]$. Si todo vértice de $A$ es adyacente
-a todo vértice de $B$, entonces diremos que $G$ es una gráfica
-\textit{biparita completa}.
-Si la cardinalidad de $A$ es $s$ y la de $B$ es $t$, denotaremos a la
-gráfica bipartita completa como $K_{s, t}$.
+\begin{definition}
+  Una gráfica $K_n$ en $n$ vértices es \textit{completa} si cualquier pareja
+  de vértices son adyacentes.
+\end{definition}
+
+\begin{definition}
+  Una gráfica es \textit{$k$-partita} si sus vértices pueden ser divididos
+  en $k$ \textit{partes} de tal manera que todas sus aristas tienen extremos en
+  partes distintas. Cuando $k=2$, es decir, cuando solo se tienen dos partes,
+  decimos que la gráfica es \textit{bipartita}.
+  Frecuentemente, denotaremos a una gráfica bipartia $H$
+  con partes $A$ y $B$ como $G[A, B]$. Decimos que una gráfica
+  $k$-partita es \textit{completa} si cualquier pareja de vértices en
+  partes distintas son adyacentes.
+\end{definition}
+
+\begin{definition}
+  Denotemos por $K_{s, t}$ a la gráfica bipartita completa con partes
+  de cardinalidad $s$ y $t$. La \textit{gráfica de Turán} $T_{k, n}$ es
+  una gráfica $k$-partita completa en $n$ vértices cuyas partes
+  difieren en cardinalidad a lo más en un vértice.
+\end{definition}
+
+\begin{definition}[clique]
+  Un clique en una gráfica $G$ es un subconjunto de vértices en el
+  cual todos sus vértices son adyacentes.
+\end{definition}
+
+\begin{definition}[conjunto independiente]
+  Un conjunto independiente en una gráfica $G$ es un subconjunto de
+  vértices en el cual ninguno de sus vértices es adyacente.
+\end{definition}
+
+\begin{definition}
+  Para dos funciones $f$ y $g$, excribimos $f = O(g)$, si $f \leq c g$
+  para alguna constante positiva $c$ y para valores suficientemente grandes de
+  las variables de $f$ y $g$. Si la desigualdad anterior es estricta,
+  esto es, si $f < cg$, entonces escribimos $f = o(g)$.
+\end{definition}
