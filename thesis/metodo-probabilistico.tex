@@ -8,8 +8,8 @@ que un método constructivo para hayarlo es complicado de idear.
   Sea $\Omega$ un conjunto. Una $\sigma$-álgebra $\Sigma$ en $\Omega$ es una
   familia de subconjuntos de $\Omega$ que satisface que
   \begin{itemize}
-    \item $\varnothing$ y $\Omega $ son elementos de $\Sigma$.\\
-    \item Si $A \in \Sigma$, entonces $\Sigma \setminus A \in \Sigma$.\\
+    \item $\varnothing$ y $\Omega $ son elementos de $\Sigma$.
+    \item Si $A \in \Sigma$, entonces $\Sigma \setminus A \in \Sigma$.
     \item Si $\{A_n\}_{n\in \N}$ es una sucesión de elementos en
       $\Sigma$, entonces
       $$\bigcup_{n \in \N} A_n \in \Sigma.$$
@@ -19,7 +19,7 @@ que un método constructivo para hayarlo es complicado de idear.
 \begin{definition}[medida]
   Una medida $\mu \Sigma: \rightarrow [0, \infty]$ es una función tal que
   \begin{itemize}
-    \item $\mu(\varnothing) = 0$.\\
+    \item $\mu(\varnothing) = 0$.
     \item Para $\{A_n\}_{n\in \N}$ en $\Sigma$, con $A_m \cap A_n =
       \varnothing$ si $m \neq n$, se tiene que
       $$ \mu\left( \bigcup_{n \in \N} A_n \right) = \sum_{n \in \N} \mu(A_n).$$
@@ -231,3 +231,11 @@ y por tanto $\vert U \vert = X \ge \epsilon^d N / 2 > 2n.$ Además,
 donde usamos la desigualdad $\vert U \vert^d \le 2^{d-1} d!
 \binom{\vert U \vert}{d}$, que se sigue de $\vert U \vert > 2n \ge 2d$.
 \end{proof}
+
+\begin{theorem}
+Sea $G$ una gráfica en $n$ vértices y $\epsilon n^2$ aristas y sea $k
+= \epsilon n^{1/2}$. Entonces $G$ contiene un subconjunto $U \subset
+V$  de vértices  con $\vert U \vert = k$ tal que para taodo $i$, $1
+\leq i \leq \binom{k}{2}$, existen menos de $i$ parejas de vértices
+en $U$ con menos de $i$ vecinos en $G \setminus U$.
+\end{theorem}
